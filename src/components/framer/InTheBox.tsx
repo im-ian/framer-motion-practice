@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 
 import { Box, Centered } from "../layout";
-import { CHIPMUNK } from "../../contants/symbol";
+import { CHIPMUNK } from "../../constants/symbol";
 
 function ChipmunkInTheBox() {
   const containerRef = useRef<HTMLDivElement>(null);

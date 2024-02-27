@@ -8,7 +8,7 @@ import {
   useTransform,
 } from "framer-motion";
 
-import { CHIPMUNK } from "../../contants/symbol";
+import { CHIPMUNK } from "../../constants/symbol";
 import { getMinMax } from "../../utils/calc";
 
 const boardStyle: CSSProperties = {

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Box, Centered, Grid, Overlay } from "./components/layout";
 import { GalleryItem } from "./types/gallery";
 
-import { GALLERY_ITEM } from "./contants/gallery";
+import { GALLERY_ITEM } from "./constants/gallery";
 
 function App() {
   const [item, setItem] = useState<GalleryItem>();
