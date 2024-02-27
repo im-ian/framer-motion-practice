@@ -16,10 +16,10 @@ function minMax(value: number, min: number, max: number) {
 
 const boardStyle: CSSProperties = {
   width: 400,
-  height: 4,
+  height: 10,
   textAlign: "center",
   backgroundColor: "#fff",
-  borderRadius: 4,
+  borderRadius: 5,
   cursor: "grab",
 };
 
@@ -54,21 +54,23 @@ function Balance() {
     rotateValue.set(diff);
   }
 
+  function handleDragEnd() {
+    animate(rotateValue, 0, {
+      type: "spring",
+      stiffness: 200,
+      damping: 50,
+    });
+  }
+
   return (
     <motion.div
-      style={{ ...boardStyle, y: 50, rotate: limitedRotateValue }}
+      style={{ ...boardStyle, y: 40, rotate: limitedRotateValue }}
       drag={"x"}
       dragConstraints={{ left: 0, right: 0 }}
       dragDirectionLock
       onDragStart={handleDragStart}
       onDrag={handleDrag}
-      onDragEnd={() => {
-        animate(rotateValue, 0, {
-          type: "spring",
-          stiffness: 200,
-          damping: 50,
-        });
-      }}
+      onDragEnd={handleDragEnd}
       transition={{
         repeat: Infinity,
         repeatType: "reverse",
@@ -82,7 +84,7 @@ function Balance() {
           display: "inline-block",
           fontSize: 30,
           x: rotateXTransform,
-          y: -36,
+          y: -34,
           rotateY: rotateYTransform,
         }}
       >
