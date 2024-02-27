@@ -7,6 +7,36 @@
 
 .box {
   padding: 20px;
-  border-radius: 25%;
+  border-radius: 14px;
   background-color: #fff;
+}
+
+.grid {
+  display: grid;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay-header {
+  padding: 24px;
+  display: flex;
+}
+
+.overlay-title {
+  flex: 1;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fff;
+}
+
+.overlay-header-close {
+  cursor: pointer;
+  color: #fff;
 }

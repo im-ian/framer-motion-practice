@@ -1,88 +1,48 @@
-import { useRef } from "react";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  useVelocity,
-} from "framer-motion";
-import { Box, Centered } from "./components/layout";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+import ChipmunkInTheBox from "./components/framer/ChipmunkInTheBox";
+import { Box, Centered, Grid, Overlay } from "./components/layout";
+
+const GALLERY_ITEM = [
+  {
+    id: "chipmunk-in-the-box",
+    title: "Chipmunk in the Box",
+    icon: "🐿",
+    content: <ChipmunkInTheBox />,
+  },
+] as const;
 
 function App() {
-  const chipmunkBoxRef = useRef<HTMLDivElement>(null);
-
-  const chipmunkMotionValueX = useMotionValue(0);
-  const chipmunkMotionValueY = useMotionValue(0);
-
-  const chipmunkSmoothX = useSpring(chipmunkMotionValueX, {
-    damping: 50,
-    stiffness: 400,
-  });
-  const chipmunkSmoothY = useSpring(chipmunkMotionValueY, {
-    damping: 50,
-    stiffness: 400,
-  });
-
-  const chipmunkVelocityX = useVelocity(chipmunkSmoothX);
-  const chipmunkVelocityY = useVelocity(chipmunkSmoothY);
-
-  // 튕겨나는 다람쥐
-  const chipmunkTransformX = useTransform(
-    chipmunkVelocityX,
-    [-100, 0, 100],
-    ["-100%", "0%", "100%"]
-  );
-  const chipmunkTransformY = useTransform(
-    chipmunkVelocityY,
-    [-100, 0, 100],
-    ["100%", "0%", "-100%"]
-  );
+  const [item, setItem] = useState<(typeof GALLERY_ITEM)[number]>();
 
   return (
-    <Centered>
-      <motion.div
-        drag
-        dragElastic={0.3}
-        dragConstraints={{ top: -200, left: -200, right: 200, bottom: 200 }}
-        style={{
-          x: chipmunkMotionValueX,
-          y: chipmunkMotionValueY,
-        }}
-        initial={{
-          rotate: 0,
-          scale: 0,
-          opacity: 0,
-        }}
-        animate={{
-          rotate: 360,
-          scale: 1,
-          opacity: 1,
-        }}
-        whileHover={{
-          scale: 1.1,
-          cursor: "grab",
-        }}
-      >
-        <Box
-          ref={chipmunkBoxRef}
-          style={{
-            height: "auto",
-            aspectRatio: "1",
-            display: "inline-block",
-          }}
-        >
-          <motion.div
-            style={{
-              position: "relative",
-              top: chipmunkTransformY,
-              right: chipmunkTransformX,
-            }}
-          >
-            🐿️
-          </motion.div>
-        </Box>
-      </motion.div>
-    </Centered>
+    <>
+      <Centered>
+        <Grid>
+          {GALLERY_ITEM.map((item) => (
+            <motion.div
+              key={item.id}
+              id={item.id}
+              layoutId={item.id}
+              whileHover={{ scale: 1.1, rotate: 10, cursor: "pointer" }}
+              onClick={() => setItem(item)}
+            >
+              <Box>{item.icon}</Box>
+            </motion.div>
+          ))}
+        </Grid>
+      </Centered>
+      <AnimatePresence>
+        {item && (
+          <Overlay title={item.title} onClose={() => setItem(undefined)}>
+            <Centered>
+              <motion.div layoutId={item.id}>{item.content}</motion.div>
+            </Centered>
+          </Overlay>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 

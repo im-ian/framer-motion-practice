@@ -1,4 +1,14 @@
-import { CSSProperties, PropsWithChildren, forwardRef } from "react";
+import {
+  CSSProperties,
+  HTMLAttributes,
+  PropsWithChildren,
+  forwardRef,
+} from "react";
+import { Minimize } from "react-feather";
+import { motion } from "framer-motion";
+
+import { addUnit } from "../../utils/unit";
+
 import style from "./index.module.css";
 
 type CenteredProps = PropsWithChildren<{
@@ -13,17 +23,56 @@ export function Centered({ style: _style, children }: CenteredProps) {
   );
 }
 
-type BoxProps = PropsWithChildren<{
-  style?: CSSProperties;
+export const Box = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+  function Box({ style: _style, children, ...props }, ref) {
+    return (
+      <div ref={ref} className={style.box} style={_style} {...props}>
+        {children}
+      </div>
+    );
+  }
+);
+
+type GridProps = PropsWithChildren<{
+  gridCols?: number;
+  gridGap?: number;
 }>;
 
-export const Box = forwardRef<HTMLDivElement, BoxProps>(function Box(
-  { style: _style, children },
-  ref
-) {
+export function Grid({ gridCols = 4, gridGap = 4, children }: GridProps) {
   return (
-    <div ref={ref} className={style.box} style={_style}>
+    <div
+      className={style.grid}
+      style={{
+        gridTemplateColumns: `repeat(${gridCols}, 1fr)`,
+        gridGap: addUnit(gridGap, "px"),
+      }}
+    >
       {children}
     </div>
   );
-});
+}
+
+type OverlayProps = PropsWithChildren<{
+  title?: string;
+  onClose?: () => void;
+}>;
+
+export function Overlay({ title, onClose, children }: OverlayProps) {
+  return (
+    <motion.div className={style.overlay}>
+      <div className={style["overlay-header"]}>
+        <div className={style["overlay-title"]}>{title}</div>
+        <div className={style["overlay-header-close"]} onClick={onClose}>
+          <motion.div
+            whileHover={{
+              rotate: 45,
+            }}
+          >
+            <Minimize color={"#fff"} />
+          </motion.div>
+        </div>
+      </div>
+      {children}
+    </motion.div>
+  );
+}
