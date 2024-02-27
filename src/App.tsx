@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Centered>
-        <Grid>
+        <Grid gridGap={8}>
           {GALLERY_ITEM.map((item) => (
             <motion.div
               key={item.id}

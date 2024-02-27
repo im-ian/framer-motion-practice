@@ -6,7 +6,9 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
+
 import { Box, Centered } from "../layout";
+import { CHIPMUNK } from "../../contants/symbol";
 
 function ChipmunkInTheBox() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -88,7 +90,7 @@ function ChipmunkInTheBox() {
                 right: chipmunkTransformX,
               }}
             >
-              🐿️
+              {CHIPMUNK}
             </motion.div>
           </Box>
         </motion.div>
