@@ -12,7 +12,7 @@ import { CHIPMUNK } from "../../constants/symbol";
 import { getMinMax } from "../../utils/calc";
 
 const boardStyle: CSSProperties = {
-  width: 400,
+  width: 380,
   height: 10,
   textAlign: "center",
   backgroundColor: "#fff",
@@ -61,7 +61,7 @@ function Balance() {
 
   return (
     <motion.div
-      style={{ ...boardStyle, y: 40, rotate: limitedRotateValue }}
+      style={{ ...boardStyle, x: 10, y: 200, rotate: limitedRotateValue }}
       drag={"x"}
       dragConstraints={{ left: 0, right: 0 }}
       dragDirectionLock

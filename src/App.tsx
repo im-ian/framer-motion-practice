@@ -34,7 +34,18 @@ function App() {
             onClose={() => setItem(undefined)}
           >
             <Centered>
-              <motion.div layoutId={item.id}>{item.content}</motion.div>
+              <motion.div
+                layoutId={item.id}
+                style={{
+                  width: 400,
+                  height: 400,
+                  border: "1px solid #fff",
+                  borderRadius: 18,
+                  backgroundColor: "rgba(0, 0, 0, .3)",
+                }}
+              >
+                {item.content}
+              </motion.div>
             </Centered>
           </Overlay>
         )}

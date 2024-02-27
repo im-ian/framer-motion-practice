@@ -7,10 +7,10 @@ import {
   useVelocity,
 } from "framer-motion";
 
-import { Box, Centered } from "../layout";
+import { Box } from "../layout";
 import { CHIPMUNK } from "../../constants/symbol";
 
-function ChipmunkInTheBox() {
+function InTheBox() {
   const containerRef = useRef<HTMLDivElement>(null);
   const chipmunkBoxRef = useRef<HTMLDivElement>(null);
 
@@ -42,61 +42,58 @@ function ChipmunkInTheBox() {
   );
 
   return (
-    <Centered>
-      <div
-        ref={containerRef}
+    <div
+      ref={containerRef}
+      style={{
+        width: "100%",
+        height: "100%",
+        borderRadius: 14,
+      }}
+    >
+      <motion.div
+        drag
+        dragElastic={0}
+        dragConstraints={containerRef}
         style={{
-          width: 400,
-          height: 400,
-          border: "1px solid #fff",
-          borderRadius: 14,
+          width: "fit-content",
+          x: chipmunkMotionValueX,
+          y: chipmunkMotionValueY,
+        }}
+        initial={{
+          rotate: 0,
+          scale: 0,
+          opacity: 0,
+        }}
+        animate={{
+          rotate: 360,
+          scale: 1,
+          opacity: 1,
+        }}
+        whileHover={{
+          cursor: "grab",
         }}
       >
-        <motion.div
-          drag
-          dragElastic={0}
-          dragConstraints={containerRef}
+        <Box
+          ref={chipmunkBoxRef}
           style={{
-            width: "fit-content",
-            x: chipmunkMotionValueX,
-            y: chipmunkMotionValueY,
-          }}
-          initial={{
-            rotate: 0,
-            scale: 0,
-            opacity: 0,
-          }}
-          animate={{
-            rotate: 360,
-            scale: 1,
-            opacity: 1,
-          }}
-          whileHover={{
-            cursor: "grab",
+            height: "auto",
+            aspectRatio: "1",
+            display: "inline-block",
           }}
         >
-          <Box
-            ref={chipmunkBoxRef}
+          <motion.div
             style={{
-              height: "auto",
-              aspectRatio: "1",
-              display: "inline-block",
+              position: "relative",
+              top: chipmunkTransformY,
+              right: chipmunkTransformX,
             }}
           >
-            <motion.div
-              style={{
-                position: "relative",
-                top: chipmunkTransformY,
-                right: chipmunkTransformX,
-              }}
-            >
-              {CHIPMUNK}
-            </motion.div>
-          </Box>
-        </motion.div>
-      </div>
-    </Centered>
+            {CHIPMUNK}
+          </motion.div>
+        </Box>
+      </motion.div>
+    </div>
   );
 }
 
-export default ChipmunkInTheBox;
+export default InTheBox;
