@@ -9,10 +9,7 @@ import {
 } from "framer-motion";
 
 import { CHIPMUNK } from "../../contants/symbol";
-
-function minMax(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
-}
+import { getMinMax } from "../../utils/calc";
 
 const boardStyle: CSSProperties = {
   width: 400,
@@ -28,7 +25,7 @@ function Balance() {
   const rotateValue = useMotionValue(0);
 
   const limitedRotateValue = useTransform(rotateValue, (value) =>
-    minMax(value, -45, 45)
+    getMinMax(value, -45, 45)
   );
 
   const rotateSmooth = useSpring(limitedRotateValue, {
