@@ -52,7 +52,7 @@ function ChipmunkInTheBox() {
       >
         <motion.div
           drag
-          dragElastic={0.3}
+          dragElastic={0}
           dragConstraints={containerRef}
           style={{
             width: "fit-content",
