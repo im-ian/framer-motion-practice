@@ -7,7 +7,7 @@ export const GALLERY_ITEM: Gallery = [
   {
     id: "in-the-box",
     title: "In the Box",
-    description: "하얀 박스를 흔들어보세요.",
+    description: "하얀 박스를 드래그 해보세요.",
     icon: "📦",
     content: <ChipmunkInTheBox />,
   },
