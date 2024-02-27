@@ -1,20 +1,13 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import ChipmunkInTheBox from "./components/framer/ChipmunkInTheBox";
 import { Box, Centered, Grid, Overlay } from "./components/layout";
+import { GalleryItem } from "./types/gallery";
 
-const GALLERY_ITEM = [
-  {
-    id: "chipmunk-in-the-box",
-    title: "Chipmunk in the Box",
-    icon: "🐿",
-    content: <ChipmunkInTheBox />,
-  },
-] as const;
+import { GALLERY_ITEM } from "./contants/gallery";
 
 function App() {
-  const [item, setItem] = useState<(typeof GALLERY_ITEM)[number]>();
+  const [item, setItem] = useState<GalleryItem>();
 
   return (
     <>
