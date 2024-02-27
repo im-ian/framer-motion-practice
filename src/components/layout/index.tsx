@@ -54,14 +54,23 @@ export function Grid({ gridCols = 4, gridGap = 4, children }: GridProps) {
 
 type OverlayProps = PropsWithChildren<{
   title?: string;
+  description?: string;
   onClose?: () => void;
 }>;
 
-export function Overlay({ title, onClose, children }: OverlayProps) {
+export function Overlay({
+  title,
+  description,
+  onClose,
+  children,
+}: OverlayProps) {
   return (
     <motion.div className={style.overlay}>
       <div className={style["overlay-header"]}>
-        <div className={style["overlay-title"]}>{title}</div>
+        <div className={style["overlay-title-section"]}>
+          <h3 className={style["overlay-title"]}>{title}</h3>
+          <p className={style["overlay-description"]}>{description}</p>
+        </div>
         <div className={style["overlay-header-close"]} onClick={onClose}>
           <motion.div
             whileHover={{

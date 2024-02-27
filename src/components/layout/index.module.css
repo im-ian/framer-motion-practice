@@ -29,10 +29,20 @@
   display: flex;
 }
 
-.overlay-title {
+.overlay-title-section {
   flex: 1;
+}
+
+.overlay-title {
   font-size: 20px;
   line-height: 24px;
+  color: #fff;
+}
+
+.overlay-description {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 20px;
   color: #fff;
 }
 

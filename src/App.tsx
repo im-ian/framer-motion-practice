@@ -28,7 +28,11 @@ function App() {
       </Centered>
       <AnimatePresence>
         {item && (
-          <Overlay title={item.title} onClose={() => setItem(undefined)}>
+          <Overlay
+            title={item.title}
+            description={item.description}
+            onClose={() => setItem(undefined)}
+          >
             <Centered>
               <motion.div layoutId={item.id}>{item.content}</motion.div>
             </Centered>
