@@ -10,6 +10,7 @@ import {
 
 import { CHIPMUNK } from "../../constants/symbol";
 import { getMinMax } from "../../utils/calc";
+import { Centered } from "../layout";
 
 const boardStyle: CSSProperties = {
   width: 380,
@@ -60,34 +61,36 @@ function Balance() {
   }
 
   return (
-    <motion.div
-      style={{ ...boardStyle, x: 10, y: 200, rotate: limitedRotateValue }}
-      drag={"x"}
-      dragConstraints={{ left: 0, right: 0 }}
-      dragDirectionLock
-      onDragStart={handleDragStart}
-      onDrag={handleDrag}
-      onDragEnd={handleDragEnd}
-      transition={{
-        repeat: Infinity,
-        repeatType: "reverse",
-        repeatDelay: 0.2,
-        duration: 1,
-        ease: "easeInOut",
-      }}
-    >
+    <Centered>
       <motion.div
-        style={{
-          display: "inline-block",
-          fontSize: 30,
-          x: rotateXTransform,
-          y: -34,
-          rotateY: rotateYTransform,
+        style={{ ...boardStyle, y: 20, rotate: limitedRotateValue }}
+        drag={"x"}
+        dragConstraints={{ left: 0, right: 0 }}
+        dragDirectionLock
+        onDragStart={handleDragStart}
+        onDrag={handleDrag}
+        onDragEnd={handleDragEnd}
+        transition={{
+          repeat: Infinity,
+          repeatType: "reverse",
+          repeatDelay: 0.2,
+          duration: 1,
+          ease: "easeInOut",
         }}
       >
-        {CHIPMUNK}
+        <motion.div
+          style={{
+            display: "inline-block",
+            fontSize: 30,
+            x: rotateXTransform,
+            y: -34,
+            rotateY: rotateYTransform,
+          }}
+        >
+          {CHIPMUNK}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </Centered>
   );
 }
 
