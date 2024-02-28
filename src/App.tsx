@@ -41,6 +41,7 @@ function App() {
                   height: 400,
                   border: "1px solid #fff",
                   borderRadius: 18,
+                  overflow: "hidden",
                   backgroundColor: "rgba(0, 0, 0, .3)",
                 }}
               >
