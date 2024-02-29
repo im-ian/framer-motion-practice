@@ -1,5 +1,5 @@
 import { forwardRef, useEffect, useState } from "react";
-import { delay, motion, useAnimate } from "framer-motion";
+import { motion, useAnimate } from "framer-motion";
 
 import { Centered } from "../layout";
 import { CHIPMUNK } from "../../constants/symbol";
