@@ -14,7 +14,7 @@ export const GALLERY_ITEM: Gallery = [
   },
   {
     id: "balance",
-    title: "Blance",
+    title: "Balance",
     description: "하얀 막대를 위 아래로 드래그해보세요.",
     icon: "⚖️",
     content: <Balance />,
