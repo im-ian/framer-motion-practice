@@ -1,9 +1,10 @@
-import { Variants, motion } from "framer-motion";
-import { CHIPMUNK } from "../../constants/symbol";
-
-import ThoughtBalloon from "../../assets/thought-balloon.svg";
-import { Centered } from "../layout";
 import { CSSProperties, useState } from "react";
+import { Variants, motion } from "framer-motion";
+
+import { Centered } from "../layout";
+
+import { CHIPMUNK } from "../../constants/symbol";
+import ThoughtBalloon from "../../assets/thought-balloon.svg";
 
 const BALLOON_STYLE: CSSProperties = {
   position: "absolute",
