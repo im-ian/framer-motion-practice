@@ -2,6 +2,7 @@ import ChipmunkInTheBox from "../components/framer/InTheBox";
 import Balance from "../components/framer/Balance";
 import ItsMine from "../components/framer/ItsMine";
 import Thinking from "../components/framer/Thinking";
+import Rotate from "../components/framer/Rotate";
 
 import { Gallery } from "../types/gallery";
 
@@ -32,5 +33,11 @@ export const GALLERY_ITEM: Gallery = [
     title: "생각",
     icon: "💭",
     content: <Thinking />,
+  },
+  {
+    id: "rotate",
+    title: "회전",
+    icon: "😵‍💫",
+    content: <Rotate />,
   },
 ];
