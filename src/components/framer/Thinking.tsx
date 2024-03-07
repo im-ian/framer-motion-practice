@@ -76,7 +76,7 @@ function Thinking() {
         animate={{
           top: "70%",
           left: "25%",
-          scale: 12,
+          scale: 11,
         }}
         transition={{
           delay: 0.5,
