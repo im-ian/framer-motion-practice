@@ -1,6 +1,7 @@
 import ChipmunkInTheBox from "../components/framer/InTheBox";
 import Balance from "../components/framer/Balance";
 import ItsMine from "../components/framer/ItsMine";
+import Thinking from "../components/framer/Thinking";
 
 import { Gallery } from "../types/gallery";
 
@@ -25,5 +26,11 @@ export const GALLERY_ITEM: Gallery = [
     description: "버튼을 클릭해주세요.",
     icon: "😼",
     content: <ItsMine />,
+  },
+  {
+    id: "thinking",
+    title: "생각",
+    icon: "💭",
+    content: <Thinking />,
   },
 ];
